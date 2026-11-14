@@ -50,5 +50,10 @@ app.patch("/api/bookings/:id/status", (req, res) => {
   if (!result.changes) return res.status(404).json({ error: "Booking not found." });
   res.json({ ok: true });
 });
+app.use(express.static(__dirname));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "FSD.html"));
+});
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`G8 Bakery API running at http://localhost:${PORT}`));
